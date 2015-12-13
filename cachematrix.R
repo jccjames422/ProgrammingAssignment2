@@ -2,16 +2,49 @@
 ## a list of 4 functions:  set(y), get(), setinverse(i), and getinverse()
 
 makeCacheMatrix <- function(x = matrix()) {
+        # Takes a matrix, saves it, and creates four functions
+        # that operate on that matrix.
+        #
+        # Args:
+        #       x: Must be a square numerical matrix.
+        #
+        # Returns:
+        #       A list of four fuctions that operate on the
+        #       given matrix.  The matrix itself is saved
+        #       in this function's environment.
+        #       
+        #       set(y):
+        #               takes a square numerical matrix and
+        #               saves it in the variable x
+        #
+        #       get():
+        #               returns the data stored in x
+        #
+        #       setinverse(i):
+        #               takes a square numerical matrix and
+        #               saves it in the variable inverse.  Note
+        #               that this function does NOT inverse
+        #               the matrix passed in by the argument x.
+        #
+        #       getinverse():
+        #               returns the data stored in inverse
+        
         inverse <- NULL
+        
         set <- function(y) {
                 x <<- y
                 m <<- NULL
         }
+        
         get <- function() x
+        
         setinverse <- function(i) inverse <<- i
+        
         getinverse <- function() inverse
-        list(set = set, get = get, 
-             setinverse = setinverse, getinverse = getinverse)
+        
+        return(list(set = set, get = get, 
+             setinverse = setinverse,
+             getinverse = getinverse))
 }
 
 ## cacheSolve(x) takes a Matrix and returns the inverse of that matrix.
